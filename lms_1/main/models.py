@@ -9,3 +9,23 @@ class Teacher(models.Model):
     qualification = models.CharField(max_length=200)
     mobile_no = models.CharField(max_length=20)
     address = models.TextField()
+
+
+class CourseCategory(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+
+
+class Course(models.Model):
+    category = models.ForeignKey(CourseCategory, on_delete=models.CASCADE)
+    description = models.TextField()
+
+
+class Student(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
+    qualification = models.CharField(max_length=200)
+    mobile_no = models.CharField(max_length=20)
+    address = models.TextField()
+    interested_categories = models.TextField()
